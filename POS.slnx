@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="POS.Api/POS.Api.csproj" Id="2c154512-7bed-4ff9-982c-0a2ab34748a6" />
+    <Project Path="POS.Application/POS.Application.csproj" Id="47d44e19-b3f3-4ca7-a69d-c69e9404db79" />
+    <Project Path="POS.Domain/POS.Domain.csproj" Id="24f78a95-390b-41a4-bc73-ebb1768fd5e2" />
+    <Project Path="POS.Infrastructure/POS.Infrastructure.csproj" Id="0c41da64-3064-45c6-88dc-73c90474f5ef" />
+    <Project Path="POS.Utilities/POS.Utilities.csproj" Id="cb48865b-d6c4-499d-8b45-07eef6d87d69" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="POS.Test/POS.Test.csproj" Id="af6a7a3d-ef43-4e6f-8dbc-01f4d0c7dfc5" />
+  </Folder>
+</Solution>
