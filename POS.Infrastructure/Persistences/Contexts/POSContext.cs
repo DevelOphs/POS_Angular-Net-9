@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using POS.Domain.Entities;
 using System.Reflection;
 
-namespace POS.Domain.Entities
+namespace POS.Infrastructure.Persistences.Contexts
 {
     public partial class POSContext : DbContext
     {
