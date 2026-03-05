@@ -4,13 +4,8 @@ using POS.Infrastructure.Commons.Bases.Response;
 
 namespace POS.Infrastructure.Persistences.Interfaces
 {
-    public interface ICategoryRespository
+    public interface ICategoryRespository : IGenericRepository<Category>
     {
         Task<BaseEntityResponse<Category>> ListCategories(BaseFilterRequest filters);
-        Task<IEnumerable<Category>> ListSelectCategories();
-        Task<Category> CategoryById(int categoryid);
-        Task<bool> RegisterCategory(Category category);
-        Task<bool> EditCategory(Category category);
-        Task<bool> RemoveCategory(int categoryid);
     }
 }
