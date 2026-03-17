@@ -1,6 +1,4 @@
-﻿using POS.Domain.Entities;
-
-namespace POS.Application.Dtos.Request
+﻿namespace POS.Application.Dtos.Category.Request
 {
     public class CategoryRequestDto
     {

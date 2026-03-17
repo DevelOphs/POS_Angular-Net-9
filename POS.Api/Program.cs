@@ -1,7 +1,5 @@
-<<<<<<< HEAD
+using POS.Api.Extensions;
 using POS.Application.Extensions;
-=======
->>>>>>> 6d20b31533ce8f586b93660028abbb8bd68570ec
 using POS.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,18 +7,30 @@ var builder = WebApplication.CreateBuilder(args);
 var Configuration = builder.Configuration;
 
 // Add services to the container.
+var Cors = "Cors";
 builder.Services.AddInjectionInfraestructure(Configuration);
-<<<<<<< HEAD
 builder.Services.AddInjectionApplication(Configuration);
-=======
->>>>>>> 6d20b31533ce8f586b93660028abbb8bd68570ec
+builder.Services.AddAuthentication(Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwagger();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: Cors,
+        builder =>
+        {
+            builder.WithOrigins("*");
+            builder.AllowAnyMethod();
+            builder.AllowAnyHeader();
+        });
+});
 
 var app = builder.Build();
+
+app.UseCors(Cors);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -30,6 +40,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

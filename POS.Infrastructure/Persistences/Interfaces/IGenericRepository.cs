@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using POS.Domain.Entities;
 using POS.Infrastructure.Commons.Bases.Request;
 using System.Linq.Expressions;
@@ -14,11 +13,5 @@ namespace POS.Infrastructure.Persistences.Interfaces
         Task<bool> RemoveAsync(int id);
         IQueryable<T> GetEntityQuery(Expression<Func<T, bool>>? filter = null);
         IQueryable<TDTO> Ordering<TDTO>(BasePaginationRequest request, IQueryable<TDTO> queryable, bool pagination = false) where TDTO : class;
-=======
-﻿namespace POS.Infrastructure.Persistences.Interfaces
-{
-    public interface IGenericRepository<T> where T : class
-    {
->>>>>>> 6d20b31533ce8f586b93660028abbb8bd68570ec
     }
 }

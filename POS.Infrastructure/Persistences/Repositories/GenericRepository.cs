@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using POS.Domain.Entities;
 using POS.Infrastructure.Commons.Bases.Request;
 using POS.Infrastructure.Helpers;
@@ -21,6 +20,7 @@ namespace POS.Infrastructure.Persistences.Repositories
             _context = context;
             _entity = _context.Set<T>();
         }
+
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             var getAll = await _entity
@@ -28,12 +28,14 @@ namespace POS.Infrastructure.Persistences.Repositories
 
             return getAll;
         }
+
         public async Task<T> GetByIdAsync(int id)
         {
             var getById = await _entity!
                 .AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(id));
             return getById!;
         }
+
         public async Task<bool> RegisterAsync(T entity)
         {
             entity.AuditCreateUser = 1;
@@ -44,6 +46,7 @@ namespace POS.Infrastructure.Persistences.Repositories
             var recordsAffected = await _context.SaveChangesAsync();
             return recordsAffected > 0;
         }
+
         public async Task<bool> EditAsync(T entity)
         {
             entity.AuditUpdateUser = 1;
@@ -55,6 +58,7 @@ namespace POS.Infrastructure.Persistences.Repositories
             var recordsAffected = await _context.SaveChangesAsync();
             return recordsAffected > 0;
         }
+
         public async Task<bool> RemoveAsync(int id)
         {
             T entity = await GetByIdAsync(id);
@@ -74,18 +78,6 @@ namespace POS.Infrastructure.Persistences.Repositories
         }
 
         public IQueryable<TDTO> Ordering<TDTO>(BasePaginationRequest request, IQueryable<TDTO> queryable, bool pagination = false) where TDTO : class
-=======
-﻿using POS.Infrastructure.Commons.Bases;
-using POS.Infrastructure.Helpers;
-using POS.Infrastructure.Persistences.Interfaces;
-using System.Linq.Dynamic.Core;
-
-namespace POS.Infrastructure.Persistences.Repositories
-{
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
-    {
-        protected IQueryable<TDTO> Ordering<TDTO>(BasePaginationRequest request, IQueryable<TDTO> queryable, bool pagination=false) where TDTO : class
->>>>>>> 6d20b31533ce8f586b93660028abbb8bd68570ec
         {
             IQueryable<TDTO> queryDto = request.Order == "desc" ? queryable.OrderBy($"{request.Sort} descending") : queryable.OrderBy($"{request.Sort} ascending");
             if (pagination) queryDto = queryDto.Paginate(request);
