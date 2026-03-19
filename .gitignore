@@ -65,3 +65,14 @@ dist/
 tmp/
 out-tsc/
 .angular/
+
+# Sensitive configuration files (user settings)
+appsettings.json
+appsettings.*.json
+!appsettings.example.json
+!appsettings.example.Development.json
+
+# Environment files
+.env
+.env.local
+.env.*.local
