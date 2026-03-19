@@ -62,6 +62,8 @@ namespace POS.Application.Services
             }
 
             response.Data = await _unitOfWork.User.RegisterAsync(account);
+
+
             if (response.Data)
             {
                 response.IsSuccess = true;

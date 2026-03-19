@@ -12,13 +12,15 @@ namespace POS.Application.Extensions
         public static IServiceCollection AddInjectionApplication(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton(configuration);
+
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<ICategoryApplication, CategoryApplication>();
             services.AddScoped<IUserApplication, UserApplication>();
+            services.AddScoped<IProviderApplication, ProviderApplication>();
 
-            
+
             return services;
         }
     }
